@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, FlatList, ActivityIndicator, Modal, TouchableOp
 import { COLORS, FONT, SIZES, SPACING } from '@/constants/theme';
 import Header from '@/components/shared/Header';
 import CourseCard, { Course } from '@/components/student/CourseCard';
-import { AlertTriangle } from 'lucide-react-native';
+import { TriangleAlert as AlertTriangle } from 'lucide-react-native';
 
 // Mock enrolled courses data - in a real app, this would come from an API
 const mockEnrolledCourses: Course[] = [
@@ -55,7 +55,7 @@ export default function EnrolledCoursesScreen() {
       
       <View style={styles.content}>
         {loading ? (
-          <ActivityIndicator size="large" color={COLORS.primary} style={styles.loader} />
+          <ActivityIndicator size="large\" color={COLORS.primary} style={styles.loader} />
         ) : enrolledCourses.length === 0 ? (
           <View style={styles.emptyState}>
             <Text style={styles.emptyStateTitle}>No Enrolled Courses</Text>
