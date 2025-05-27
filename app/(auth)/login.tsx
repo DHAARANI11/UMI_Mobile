@@ -66,12 +66,14 @@ export default function LoginScreen() {
     >
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.header}>
-          <Link href="/(auth)" asChild>
-            <TouchableOpacity style={styles.backButton}>
-              <ChevronLeft size={24} color={COLORS.primary} />
-              <Text style={styles.backText}>Back</Text>
-            </TouchableOpacity>
-          </Link>
+          <View style={styles.backButtonWrapper}>
+            <Link href="/(auth)" style={styles.backButtonLink}>
+              <View style={styles.backButtonContent}>
+                <ChevronLeft size={24} color={COLORS.primary} />
+                <Text style={styles.backText}>Back</Text>
+              </View>
+            </Link>
+          </View>
           <Text style={styles.title}>{getRoleTitle()}</Text>
         </View>
 
@@ -115,11 +117,14 @@ export default function LoginScreen() {
             )}
           </TouchableOpacity>
 
-          <Link href={{ pathname: '/(auth)/forgot-password', params: { email } }} asChild>
-            <TouchableOpacity style={styles.forgotPasswordLink}>
+          <View style={styles.forgotPasswordWrapper}>
+            <Link 
+              href={{ pathname: '/(auth)/forgot-password', params: { email } }}
+              style={styles.forgotPasswordLink}
+            >
               <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-            </TouchableOpacity>
-          </Link>
+            </Link>
+          </View>
         </View>
 
         <View style={styles.footer}>
@@ -145,10 +150,15 @@ const styles = StyleSheet.create({
   header: {
     marginBottom: SPACING.xl,
   },
-  backButton: {
+  backButtonWrapper: {
+    marginBottom: SPACING.md,
+  },
+  backButtonLink: {
+    width: 'auto',
+  },
+  backButtonContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: SPACING.md,
   },
   backText: {
     fontFamily: FONT.medium,
@@ -209,9 +219,12 @@ const styles = StyleSheet.create({
     fontSize: SIZES.md,
     color: COLORS.white,
   },
-  forgotPasswordLink: {
+  forgotPasswordWrapper: {
     alignItems: 'center',
     marginTop: SPACING.sm,
+  },
+  forgotPasswordLink: {
+    width: 'auto',
   },
   forgotPasswordText: {
     fontFamily: FONT.medium,
