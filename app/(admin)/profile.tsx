@@ -3,47 +3,52 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-nati
 import { COLORS, FONT, SIZES, SPACING, SHADOWS } from '@/constants/theme';
 import ProfileHeader from '@/components/shared/ProfileHeader';
 import { useAuth } from '@/context/AuthContext';
-import { Mail, Phone, BookOpen, GraduationCap, MapPin, Award, Calendar, ChevronRight } from 'lucide-react-native';
+import { Mail, Phone, Shield, Key, Clock, Settings, ChevronRight } from 'lucide-react-native';
 
-// Mock faculty data
-const mockFacultyData = {
+// Mock admin data
+const mockAdminData = {
   id: '1',
-  name: 'Dr. John Faculty',
-  email: 'faculty@university.edu',
+  name: 'Admin User',
+  email: 'admin@university.edu',
   phone: '+1 (555) 123-4567',
-  department: 'Computer Science',
-  designation: 'Associate Professor',
-  specialization: 'Artificial Intelligence',
-  experience: '10 years',
-  education: [
+  role: 'System Administrator',
+  department: 'IT Administration',
+  joinDate: '2020-01-15',
+  lastLogin: '2024-03-15 09:30 AM',
+  permissions: [
+    'User Management',
+    'Course Management',
+    'Faculty Management',
+    'Student Management',
+    'System Configuration',
+  ],
+  recentActivities: [
     {
-      degree: 'Ph.D. in Computer Science',
-      institution: 'Stanford University',
-      year: '2015',
+      id: '1',
+      action: 'Added new faculty member',
+      timestamp: '2024-03-14 02:30 PM',
     },
     {
-      degree: 'M.S. in Computer Science',
-      institution: 'MIT',
-      year: '2010',
+      id: '2',
+      action: 'Updated course schedule',
+      timestamp: '2024-03-14 11:45 AM',
+    },
+    {
+      id: '3',
+      action: 'Approved student registration',
+      timestamp: '2024-03-13 04:15 PM',
     },
   ],
-  courses: [
-    'Advanced Database Systems',
-    'Machine Learning',
-    'Neural Networks',
-  ],
-  office: 'Room 401, Computer Science Building',
-  officeHours: 'Mon-Wed 2:00 PM - 4:00 PM',
 };
 
-export default function FacultyProfileScreen() {
+export default function AdminProfileScreen() {
   const { user } = useAuth();
 
   return (
     <View style={styles.container}>
       <ProfileHeader 
-        name={user?.name || mockFacultyData.name}
-        role="Faculty"
+        name={user?.name || mockAdminData.name}
+        role="Administrator"
         profileImage={user?.profilePicture}
         canEdit={true}
       />
@@ -58,7 +63,7 @@ export default function FacultyProfileScreen() {
               </View>
               <View style={styles.infoContent}>
                 <Text style={styles.infoLabel}>Email</Text>
-                <Text style={styles.infoValue}>{mockFacultyData.email}</Text>
+                <Text style={styles.infoValue}>{mockAdminData.email}</Text>
               </View>
             </View>
 
@@ -68,95 +73,91 @@ export default function FacultyProfileScreen() {
               </View>
               <View style={styles.infoContent}>
                 <Text style={styles.infoLabel}>Phone</Text>
-                <Text style={styles.infoValue}>{mockFacultyData.phone}</Text>
-              </View>
-            </View>
-
-            <View style={styles.infoRow}>
-              <View style={styles.infoIcon}>
-                <MapPin size={20} color={COLORS.gray} />
-              </View>
-              <View style={styles.infoContent}>
-                <Text style={styles.infoLabel}>Office</Text>
-                <Text style={styles.infoValue}>{mockFacultyData.office}</Text>
-              </View>
-            </View>
-
-            <View style={styles.infoRow}>
-              <View style={styles.infoIcon}>
-                <Calendar size={20} color={COLORS.gray} />
-              </View>
-              <View style={styles.infoContent}>
-                <Text style={styles.infoLabel}>Office Hours</Text>
-                <Text style={styles.infoValue}>{mockFacultyData.officeHours}</Text>
+                <Text style={styles.infoValue}>{mockAdminData.phone}</Text>
               </View>
             </View>
           </View>
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Academic Information</Text>
+          <Text style={styles.sectionTitle}>Administrative Information</Text>
           <View style={styles.card}>
             <View style={styles.infoRow}>
               <View style={styles.infoIcon}>
-                <GraduationCap size={20} color={COLORS.gray} />
+                <Shield size={20} color={COLORS.gray} />
+              </View>
+              <View style={styles.infoContent}>
+                <Text style={styles.infoLabel}>Role</Text>
+                <Text style={styles.infoValue}>{mockAdminData.role}</Text>
+              </View>
+            </View>
+
+            <View style={styles.infoRow}>
+              <View style={styles.infoIcon}>
+                <Settings size={20} color={COLORS.gray} />
               </View>
               <View style={styles.infoContent}>
                 <Text style={styles.infoLabel}>Department</Text>
-                <Text style={styles.infoValue}>{mockFacultyData.department}</Text>
+                <Text style={styles.infoValue}>{mockAdminData.department}</Text>
               </View>
             </View>
 
             <View style={styles.infoRow}>
               <View style={styles.infoIcon}>
-                <Award size={20} color={COLORS.gray} />
+                <Clock size={20} color={COLORS.gray} />
               </View>
               <View style={styles.infoContent}>
-                <Text style={styles.infoLabel}>Designation</Text>
-                <Text style={styles.infoValue}>{mockFacultyData.designation}</Text>
+                <Text style={styles.infoLabel}>Join Date</Text>
+                <Text style={styles.infoValue}>
+                  {new Date(mockAdminData.joinDate).toLocaleDateString()}
+                </Text>
               </View>
             </View>
 
             <View style={styles.infoRow}>
               <View style={styles.infoIcon}>
-                <BookOpen size={20} color={COLORS.gray} />
+                <Key size={20} color={COLORS.gray} />
               </View>
               <View style={styles.infoContent}>
-                <Text style={styles.infoLabel}>Specialization</Text>
-                <Text style={styles.infoValue}>{mockFacultyData.specialization}</Text>
+                <Text style={styles.infoLabel}>Last Login</Text>
+                <Text style={styles.infoValue}>{mockAdminData.lastLogin}</Text>
               </View>
             </View>
           </View>
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Education</Text>
+          <Text style={styles.sectionTitle}>System Permissions</Text>
           <View style={styles.card}>
-            {mockFacultyData.education.map((edu, index) => (
-              <View key={index} style={[styles.infoRow, index === mockFacultyData.education.length - 1 && styles.lastRow]}>
-                <View style={styles.infoIcon}>
-                  <GraduationCap size={20} color={COLORS.gray} />
-                </View>
-                <View style={styles.infoContent}>
-                  <Text style={styles.infoValue}>{edu.degree}</Text>
-                  <Text style={styles.infoSubtext}>{edu.institution}, {edu.year}</Text>
-                </View>
+            {mockAdminData.permissions.map((permission, index) => (
+              <View 
+                key={index} 
+                style={[
+                  styles.permissionRow,
+                  index === mockAdminData.permissions.length - 1 && styles.lastRow
+                ]}
+              >
+                <Shield size={20} color={COLORS.success} />
+                <Text style={styles.permissionText}>{permission}</Text>
               </View>
             ))}
           </View>
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Courses</Text>
+          <Text style={styles.sectionTitle}>Recent Activities</Text>
           <View style={styles.card}>
-            {mockFacultyData.courses.map((course, index) => (
+            {mockAdminData.recentActivities.map((activity, index) => (
               <TouchableOpacity 
-                key={index} 
-                style={[styles.courseRow, index === mockFacultyData.courses.length - 1 && styles.lastRow]}
+                key={activity.id} 
+                style={[
+                  styles.activityRow,
+                  index === mockAdminData.recentActivities.length - 1 && styles.lastRow
+                ]}
               >
-                <View style={styles.courseInfo}>
-                  <BookOpen size={20} color={COLORS.gray} />
-                  <Text style={styles.courseName}>{course}</Text>
+                <View style={styles.activityInfo}>
+                  <Text style={styles.activityText}>{activity.action}</Text>
+                  <Text style={styles.activityTime}>{activity.timestamp}</Text>
                 </View>
                 <ChevronRight size={20} color={COLORS.gray} />
               </TouchableOpacity>
@@ -222,13 +223,20 @@ const styles = StyleSheet.create({
     fontSize: SIZES.md,
     color: COLORS.darkGray,
   },
-  infoSubtext: {
-    fontFamily: FONT.regular,
-    fontSize: SIZES.sm,
-    color: COLORS.gray,
-    marginTop: 2,
+  permissionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: SPACING.sm,
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.lightGray,
+    gap: SPACING.sm,
   },
-  courseRow: {
+  permissionText: {
+    fontFamily: FONT.medium,
+    fontSize: SIZES.md,
+    color: COLORS.darkGray,
+  },
+  activityRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -236,14 +244,18 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: COLORS.lightGray,
   },
-  courseInfo: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: SPACING.sm,
+  activityInfo: {
+    flex: 1,
   },
-  courseName: {
+  activityText: {
     fontFamily: FONT.medium,
     fontSize: SIZES.md,
     color: COLORS.darkGray,
+  },
+  activityTime: {
+    fontFamily: FONT.regular,
+    fontSize: SIZES.sm,
+    color: COLORS.gray,
+    marginTop: 2,
   },
 });

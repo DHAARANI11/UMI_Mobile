@@ -18,13 +18,17 @@ export interface Course {
 interface CourseCardProps {
   course: Course;
   showEnrollButton?: boolean;
+  showDropButton?: boolean;
   onEnroll?: (courseId: string) => void;
+  onDrop?: (courseId: string) => void;
 }
 
 const CourseCard: React.FC<CourseCardProps> = ({
   course,
   showEnrollButton = false,
+  showDropButton = false,
   onEnroll,
+  onDrop,
 }) => {
   const router = useRouter();
 
@@ -87,7 +91,16 @@ const CourseCard: React.FC<CourseCardProps> = ({
             </TouchableOpacity>
           )}
           
-          {course.enrolled && (
+          {showDropButton && course.enrolled && (
+            <TouchableOpacity 
+              style={styles.dropButton}
+              onPress={() => onDrop && onDrop(course.id)}
+            >
+              <Text style={styles.dropButtonText}>Drop Course</Text>
+            </TouchableOpacity>
+          )}
+          
+          {course.enrolled && !showDropButton && (
             <View style={styles.enrolledBadge}>
               <Text style={styles.enrolledText}>Enrolled</Text>
             </View>
@@ -170,6 +183,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.md,
   },
   enrollButtonText: {
+    fontFamily: FONT.medium,
+    fontSize: SIZES.sm,
+    color: COLORS.white,
+  },
+  dropButton: {
+    backgroundColor: COLORS.error,
+    borderRadius: 6,
+    paddingVertical: SPACING.xs,
+    paddingHorizontal: SPACING.md,
+  },
+  dropButtonText: {
     fontFamily: FONT.medium,
     fontSize: SIZES.sm,
     color: COLORS.white,
