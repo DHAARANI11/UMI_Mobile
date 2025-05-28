@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import {
   View,
   Text,
@@ -7,17 +8,28 @@ import {
   FlatList,
   ActivityIndicator,
 } from 'react-native';
+=======
+import { View, Text, StyleSheet, TextInput, FlatList, ActivityIndicator } from 'react-native';
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
 import { COLORS, FONT, SIZES, SPACING } from '@/constants/theme';
 import Header from '@/components/shared/Header';
 import CourseCard, { Course } from '@/components/student/CourseCard';
 import { Search } from 'lucide-react-native';
 
+<<<<<<< HEAD
+=======
+// Mock course data
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
 const mockCourses: Course[] = [
   {
     id: '1',
     name: 'Introduction to Computer Science',
+<<<<<<< HEAD
     description:
       'A foundational course covering the basics of computer science, algorithms, and programming concepts.',
+=======
+    description: 'A foundational course covering the basics of computer science, algorithms, and programming concepts.',
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
     faculty: 'Dr. John Smith',
     credits: 4,
     duration: '16 weeks',
@@ -26,8 +38,12 @@ const mockCourses: Course[] = [
   {
     id: '2',
     name: 'Advanced Database Systems',
+<<<<<<< HEAD
     description:
       'This course covers advanced topics in database design, query optimization, and distributed databases.',
+=======
+    description: 'This course covers advanced topics in database design, query optimization, and distributed databases.',
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
     faculty: 'Dr. Lisa Johnson',
     credits: 3,
     duration: '12 weeks',
@@ -36,8 +52,12 @@ const mockCourses: Course[] = [
   {
     id: '3',
     name: 'Artificial Intelligence',
+<<<<<<< HEAD
     description:
       'An introduction to artificial intelligence concepts, machine learning algorithms, and neural networks.',
+=======
+    description: 'An introduction to artificial intelligence concepts, machine learning algorithms, and neural networks.',
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
     faculty: 'Prof. Michael Lee',
     credits: 4,
     duration: '16 weeks',
@@ -46,8 +66,12 @@ const mockCourses: Course[] = [
   {
     id: '4',
     name: 'Web Development',
+<<<<<<< HEAD
     description:
       'Learn modern web development techniques, frameworks, and best practices for building responsive web applications.',
+=======
+    description: 'Learn modern web development techniques, frameworks, and best practices for building responsive web applications.',
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
     faculty: 'Dr. Sarah Williams',
     credits: 3,
     duration: '12 weeks',
@@ -56,8 +80,12 @@ const mockCourses: Course[] = [
   {
     id: '5',
     name: 'Data Structures and Algorithms',
+<<<<<<< HEAD
     description:
       'A comprehensive study of data structures, algorithms, and their analysis for efficient problem-solving.',
+=======
+    description: 'A comprehensive study of data structures, algorithms, and their analysis for efficient problem-solving.',
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
     faculty: 'Prof. Robert Chen',
     credits: 4,
     duration: '16 weeks',
@@ -69,6 +97,7 @@ export default function AvailableCoursesScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [enrollingCourseId, setEnrollingCourseId] = useState<string | null>(null);
+<<<<<<< HEAD
   const [enrolledCourses, setEnrolledCourses] = useState<string[]>([]); // course ids
 
   const handleEnroll = (courseId: string) => {
@@ -79,6 +108,10 @@ export default function AvailableCoursesScreen() {
     }, 1000);
   };
 
+=======
+
+  // Filter courses based on search query
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
   const filteredCourses = mockCourses.filter(
     (course) =>
       course.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -86,9 +119,27 @@ export default function AvailableCoursesScreen() {
       course.faculty.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+<<<<<<< HEAD
   return (
     <View style={styles.container}>
       <Header title="Available Courses" />
+=======
+  const handleEnroll = (courseId: string) => {
+    setEnrollingCourseId(courseId);
+    
+    // Simulate API call
+    setTimeout(() => {
+      // In a real app, this would update the backend
+      setEnrollingCourseId(null);
+      // Show success message or update UI
+    }, 1000);
+  };
+
+  return (
+    <View style={styles.container}>
+      <Header title="Available Courses" />
+      
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
       <View style={styles.content}>
         <View style={styles.searchContainer}>
           <Search size={20} color={COLORS.gray} style={styles.searchIcon} />
@@ -112,11 +163,18 @@ export default function AvailableCoursesScreen() {
             data={filteredCourses}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
+<<<<<<< HEAD
               <CourseCard
                 course={{ ...item, enrolled: enrolledCourses.includes(item.id) }}
                 showEnrollButton={!enrolledCourses.includes(item.id)}
                 onEnroll={() => handleEnroll(item.id)}
                 enrolling={enrollingCourseId === item.id}
+=======
+              <CourseCard 
+                course={item} 
+                showEnrollButton={true}
+                onEnroll={handleEnroll}
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
               />
             )}
             contentContainerStyle={styles.coursesList}
@@ -156,7 +214,11 @@ const styles = StyleSheet.create({
     paddingVertical: SPACING.md,
   },
   coursesList: {
+<<<<<<< HEAD
     paddingBottom: 100,
+=======
+    paddingBottom: 100, // Extra space for the tab bar
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
   },
   loader: {
     marginTop: SPACING.xl,
@@ -173,4 +235,8 @@ const styles = StyleSheet.create({
     color: COLORS.gray,
     textAlign: 'center',
   },
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import {
   View,
   Text,
@@ -26,6 +27,12 @@ import {
   Trash2,
   CreditCard as Edit2,
 } from 'lucide-react-native';
+=======
+import { View, Text, StyleSheet, TextInput, FlatList, TouchableOpacity, Modal } from 'react-native';
+import { COLORS, FONT, SIZES, SPACING, SHADOWS } from '@/constants/theme';
+import Header from '@/components/shared/Header';
+import { Search, Plus, Mail, Phone, GraduationCap, Trash2, CreditCard as Edit2 } from 'lucide-react-native';
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
 
 const mockFaculty = [
   {
@@ -49,7 +56,10 @@ const mockFaculty = [
 ];
 
 export default function FacultyManagementScreen() {
+<<<<<<< HEAD
   const [facultyList, setFacultyList] = useState(mockFaculty);
+=======
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
   const [searchQuery, setSearchQuery] = useState('');
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);
   const [newFaculty, setNewFaculty] = useState({
@@ -60,7 +70,11 @@ export default function FacultyManagementScreen() {
     designation: '',
   });
 
+<<<<<<< HEAD
   const filteredFaculty = facultyList.filter(
+=======
+  const filteredFaculty = mockFaculty.filter(
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
     (faculty) =>
       faculty.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       faculty.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -68,6 +82,7 @@ export default function FacultyManagementScreen() {
   );
 
   const handleAddFaculty = () => {
+<<<<<<< HEAD
     const newEntry = {
       ...newFaculty,
       id: Date.now().toString(),
@@ -75,6 +90,9 @@ export default function FacultyManagementScreen() {
     };
 
     setFacultyList((prev) => [newEntry, ...prev]);
+=======
+    // Add faculty logic here
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
     setIsAddModalVisible(false);
     setNewFaculty({
       name: '',
@@ -85,6 +103,7 @@ export default function FacultyManagementScreen() {
     });
   };
 
+<<<<<<< HEAD
   const handleDeleteFaculty = (id, name) => {
     Alert.alert(
       'Delete Faculty',
@@ -107,6 +126,12 @@ export default function FacultyManagementScreen() {
     <View style={styles.container}>
       <Header title="Faculty Management" />
 
+=======
+  return (
+    <View style={styles.container}>
+      <Header title="Faculty Management" />
+      
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
       <View style={styles.content}>
         <View style={styles.searchContainer}>
           <Search size={20} color={COLORS.gray} style={styles.searchIcon} />
@@ -139,32 +164,52 @@ export default function FacultyManagementScreen() {
                   <TouchableOpacity style={styles.editButton}>
                     <Edit2 size={16} color={COLORS.primary} />
                   </TouchableOpacity>
+<<<<<<< HEAD
                   <TouchableOpacity
                     style={styles.deleteButton}
                     onPress={() => handleDeleteFaculty(item.id, item.name)}
                   >
+=======
+                  <TouchableOpacity style={styles.deleteButton}>
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
                     <Trash2 size={16} color={COLORS.error} />
                   </TouchableOpacity>
                 </View>
               </View>
+<<<<<<< HEAD
 
+=======
+              
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
               <View style={styles.facultyDetails}>
                 <View style={styles.detailItem}>
                   <Mail size={16} color={COLORS.gray} />
                   <Text style={styles.detailText}>{item.email}</Text>
                 </View>
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
                 <View style={styles.detailItem}>
                   <Phone size={16} color={COLORS.gray} />
                   <Text style={styles.detailText}>{item.phone}</Text>
                 </View>
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
                 <View style={styles.detailItem}>
                   <GraduationCap size={16} color={COLORS.gray} />
                   <Text style={styles.detailText}>{item.department}</Text>
                 </View>
               </View>
+<<<<<<< HEAD
 
+=======
+              
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
               <View style={styles.coursesContainer}>
                 <Text style={styles.coursesLabel}>Assigned Courses:</Text>
                 <View style={styles.coursesList}>
@@ -189,21 +234,33 @@ export default function FacultyManagementScreen() {
           <View style={styles.modalOverlay}>
             <View style={styles.modalContent}>
               <Text style={styles.modalTitle}>Add New Faculty</Text>
+<<<<<<< HEAD
 
+=======
+              
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
               <TextInput
                 style={styles.input}
                 placeholder="Full Name"
                 value={newFaculty.name}
+<<<<<<< HEAD
                 onChangeText={(text) =>
                   setNewFaculty({ ...newFaculty, name: text })
                 }
                 placeholderTextColor={COLORS.gray}
               />
 
+=======
+                onChangeText={(text) => setNewFaculty({ ...newFaculty, name: text })}
+                placeholderTextColor={COLORS.gray}
+              />
+              
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
               <TextInput
                 style={styles.input}
                 placeholder="Email"
                 value={newFaculty.email}
+<<<<<<< HEAD
                 onChangeText={(text) =>
                   setNewFaculty({ ...newFaculty, email: text })
                 }
@@ -211,10 +268,18 @@ export default function FacultyManagementScreen() {
                 keyboardType="email-address"
               />
 
+=======
+                onChangeText={(text) => setNewFaculty({ ...newFaculty, email: text })}
+                placeholderTextColor={COLORS.gray}
+                keyboardType="email-address"
+              />
+              
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
               <TextInput
                 style={styles.input}
                 placeholder="Phone"
                 value={newFaculty.phone}
+<<<<<<< HEAD
                 onChangeText={(text) =>
                   setNewFaculty({ ...newFaculty, phone: text })
                 }
@@ -222,23 +287,41 @@ export default function FacultyManagementScreen() {
                 keyboardType="phone-pad"
               />
 
+=======
+                onChangeText={(text) => setNewFaculty({ ...newFaculty, phone: text })}
+                placeholderTextColor={COLORS.gray}
+                keyboardType="phone-pad"
+              />
+              
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
               <TextInput
                 style={styles.input}
                 placeholder="Department"
                 value={newFaculty.department}
+<<<<<<< HEAD
                 onChangeText={(text) =>
                   setNewFaculty({ ...newFaculty, department: text })
                 }
                 placeholderTextColor={COLORS.gray}
               />
 
+=======
+                onChangeText={(text) => setNewFaculty({ ...newFaculty, department: text })}
+                placeholderTextColor={COLORS.gray}
+              />
+              
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
               <TextInput
                 style={styles.input}
                 placeholder="Designation"
                 value={newFaculty.designation}
+<<<<<<< HEAD
                 onChangeText={(text) =>
                   setNewFaculty({ ...newFaculty, designation: text })
                 }
+=======
+                onChangeText={(text) => setNewFaculty({ ...newFaculty, designation: text })}
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
                 placeholderTextColor={COLORS.gray}
               />
 
@@ -249,7 +332,11 @@ export default function FacultyManagementScreen() {
                 >
                   <Text style={styles.cancelButtonText}>Cancel</Text>
                 </TouchableOpacity>
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
                 <TouchableOpacity
                   style={[styles.modalButton, styles.addButtonModal]}
                   onPress={handleAddFaculty}
@@ -437,4 +524,8 @@ const styles = StyleSheet.create({
     fontSize: SIZES.md,
     color: COLORS.white,
   },
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 4b5646ce3fe17203e5ef115b24c073d7b7315606
