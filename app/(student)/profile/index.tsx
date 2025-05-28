@@ -7,29 +7,45 @@ import { useAuth } from '@/context/AuthContext';
 import { Mail, Phone, CalendarClock, User, MapPin, GraduationCap, Github, Linkedin } from 'lucide-react-native';
 
 const initialData = {
-  id: '1',
-  name: 'John Student',
-  email: 'student@university.edu',
-  rollNumber: 'CS2023001',
-  phone: '+1 (555) 123-4567',
-  dob: '1998-05-15',
+  id: 'L302',
+  name: 'Akash',
+  email: 'akash@example.com',
+  rollNumber: 'L302',
+  phone: '9876543210',
+  dob: '2004-03-07',
   gender: 'Male',
-  address: '123 University Ave, Campus City',
-  department: 'Computer Science',
-  batch: '2023-2027',
-  fathersName: 'Robert Student',
-  mothersName: 'Mary Student',
-  firstGraduate: 'No',
+  address: '123, Main Street, Chennai, India',
+  department: 'ECE',
+  batch: '2021-2025',
+  fathersName: 'Nagarajan',
+  mothersName: 'Deepa',
+  firstGraduate: 'Yes',
   github: 'johndoe',
   linkedin: 'johndoe',
-  profilePicture: null, // or some default image uri
+  profilePicture: 'https://example.com/images/student123.jpg',
 };
 
 const education = {
-  college: { institution: 'University College', startYear: '2023', endYear: '2027', cgpa: '3.8' },
-  highSchool: { institution: 'City High School', startYear: '2021', endYear: '2023', percentage: '92%' },
-  school: { institution: 'City Secondary School', startYear: '2019', endYear: '2021', percentage: '90%' },
+  college: {
+    institution: 'ABC Engineering College',
+    startYear: '2021',
+    endYear: '2025',
+    cgpa: '8.5',
+  },
+  highSchool: {
+    institution: 'XYZ Higher Secondary School',
+    startYear: '2020',
+    endYear: '2021',
+    percentage: '90%',
+  },
+  school: {
+    institution: 'XYZ Matric School',
+    startYear: '2018',
+    endYear: '2019',
+    percentage: '92%',
+  },
 };
+
 
 export default function StudentProfileScreen() {
   const { user } = useAuth();
